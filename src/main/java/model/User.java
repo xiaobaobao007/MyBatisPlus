@@ -1,36 +1,57 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * @author xiaobaobao
  * @date 2019/8/10 16:08
  */
-public class User {
+public class User implements Serializable {
 
-    private int id;
-    private String name;
-    private int age;
+	private static final long serialVersionUID = 1L;
 
-    public int getId() {
-        return id;
-    }
+	private int id;
+	private String name;
+	private int age;
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public User() {
+	}
 
-    public String getName() {
-        return name;
-    }
+	public User(int id, String name, int age) {
+		this.id = id;
+		this.name = name;
+		this.age = age;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public int getAge() {
-        return age;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", age=" + age +
+				'}';
+	}
 }
