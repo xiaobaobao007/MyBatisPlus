@@ -15,6 +15,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class MyBatisTest {
@@ -68,9 +69,9 @@ public class MyBatisTest {
 		session.selectOne("User.findById", 1);
 		System.out.println("---------------------------------------------");
 		session.selectOne("User.findById", 1);
-		System.out.println("---------------------------------------------");
-		session.clearCache();
-		session.selectOne("User.findById", 1);
+//		System.out.println("---------------------------------------------");
+//		session.clearCache();
+//		session.selectOne("User.findById", 1);
 	}
 
 	@Test
@@ -78,12 +79,29 @@ public class MyBatisTest {
 		session.selectOne("User.findById", 1);
 		session.commit();
 		System.out.println("---------------------------------------------");
-		session1.selectOne("User.findById", 1);
+		session.selectOne("User.findById", 1);
+//		session.commit();
+//		System.out.println("---------------------------------------------");
+//		session1.selectOne("User.findById", 1);
 //		System.out.println("---------------------------------------------");
 //		User user = new User(1, "123", new Random().nextInt(10000));
 //		session1.update("User.update", user);
 //		System.out.println("---------------------------------------------");
 //		System.out.println(session1.selectOne("User.findById", 1));
+	}
+
+	@Test
+	public void run5_readOnly() {
+		session.selectOne("User.findById", 1);
+		session.commit();
+		System.out.println("---------------------------------------------");
+		session.selectOne("User.findById", 1);
+		System.out.println("---------------------------------------------");
+		User user = new User(1, "123", new Random().nextInt(10000));
+		session1.update("User.update", user);
+		session1.commit();
+		System.out.println("---------------------------------------------");
+		System.out.println(((User) session1.selectOne("User.findById", 1)).getAge());
 	}
 
 	@Test

@@ -7,7 +7,9 @@
 
 	<settings>
 		<!--全局的二级缓存-->
-		<setting name="cacheEnabled" value="true"/>
+		<setting name="cacheEnabled" value="TRUE"/>
+		<setting name="localCacheScope" value="STATEMENT"/>
+<!--		<setting name="localCacheScope" value="SESSION"/>-->
 		<!--开启控制台输出日志-->
 		<setting name="logImpl" value="stdout_logging"/>
 	</settings>
