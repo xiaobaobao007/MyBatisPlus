@@ -24,4 +24,20 @@
 		where id = #{id};
 	</select>
 
+	<select id="findByInByArray" resultType="User">
+		SELECT * FROM user
+		WHERE id IN
+		<foreach collection="array" item="name" index="index" open="(" close=")" separator=",">
+			#{name}
+		</foreach>
+	</select>
+
+	<select id="findByInByList" resultType="User">
+		SELECT * FROM user
+		WHERE id IN
+		<foreach collection="list" item="name" index="index" open="(" close=")" separator=",">
+			#{name}
+		</foreach>
+	</select>
+
 </mapper>

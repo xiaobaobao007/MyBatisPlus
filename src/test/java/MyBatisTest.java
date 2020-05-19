@@ -14,7 +14,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.Random;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class MyBatisTest {
 
@@ -83,6 +84,13 @@ public class MyBatisTest {
 //		session1.update("User.update", user);
 //		System.out.println("---------------------------------------------");
 //		System.out.println(session1.selectOne("User.findById", 1));
+	}
+
+	@Test
+	public void run4() {
+		System.out.println(session.selectList("User.findByInByArray", new int[]{1, 3}));
+		System.out.println("---------------------------------------------");
+		System.out.println(session.selectList("User.findByInByList", Arrays.stream(new int[]{1, 3}).boxed().collect(Collectors.toList())));
 	}
 
 	@After
